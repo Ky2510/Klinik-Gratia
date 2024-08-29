@@ -17,7 +17,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var string
      */
-    protected $primaryKey = 'uuid';
+    protected $primaryKey = 'id';
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -73,7 +73,7 @@ class User extends Authenticatable implements JWTSubject
         parent::boot();
 
         static::creating(function ($user) {
-            $user->uuid = (string) Str::uuid();
+            $user->id = (string) Str::uuid();
         });
     }
 

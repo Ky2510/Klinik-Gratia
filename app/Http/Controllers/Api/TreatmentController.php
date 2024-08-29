@@ -29,21 +29,17 @@ class TreatmentController extends Controller
      */
     public function store(Request $request)
     {
-        // Set validation
         $validator = Validator::make($request->all(), [
             'name'        => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
 
-        // If validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        // Create treatment
         $treatment = Treatment::create($request->all());
 
-        // Return response JSON treatment is created
         return response()->json($treatment, 201);
     }
 
@@ -67,21 +63,17 @@ class TreatmentController extends Controller
      */
     public function update(Request $request, Treatment $id)
     {
-        // Set validation
         $validator = Validator::make($request->all(), [
             'name'        => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
 
-        // If validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        // Update id
         $id->update($request->all());
 
-        // Return response JSON id is updated
         return response()->json($id);
     }
 

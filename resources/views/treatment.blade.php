@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Daftar Doctor</div>
+                <div class="card-header">Daftar Treatment</div>
 
                 <div class="card-body">
                     <table id="tbl_list" class="table table-striped table-bordered" cellspacing="0" width="100%">

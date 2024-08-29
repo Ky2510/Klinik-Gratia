@@ -29,7 +29,6 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        // Set validation
         $validator = Validator::make($request->all(), [
             'user_id'          => 'required|uuid|exists:users,uuid',
             'doctor_id'        => 'required|uuid|exists:doctors,id',
@@ -37,12 +36,10 @@ class AppointmentController extends Controller
             'appointment_date' => 'required|date_format:Y-m-d',
         ]);
     
-        // If validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
     
-        // Create appointment
         $appointment = Appointment::create([
             'user_id' => $request->user_id,
             'doctor_id' => $request->doctor_id,
@@ -50,7 +47,6 @@ class AppointmentController extends Controller
             'appointment_date' => $request->appointment_date
         ]);
     
-        // Return response JSON appointment is created
         return response()->json($appointment, 201);
     }
     
@@ -75,7 +71,6 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $id)
     {
-        // Set validation
         $validator = Validator::make($request->all(), [
             'user_id'          => 'required|uuid|exists:users,id',
             'doctor_id'        => 'required|uuid|exists:doctors,id',
@@ -83,15 +78,12 @@ class AppointmentController extends Controller
             'appointment_date' => 'required|date_format:Y-m-d',
         ]);
 
-        // If validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        // Update appointment
         $id->update($request->all());
 
-        // Return response JSON appointment is updated
         return response()->json($id);
     }
 

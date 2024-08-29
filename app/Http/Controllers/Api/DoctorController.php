@@ -29,24 +29,20 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        // Set validation
         $validator = Validator::make($request->all(), [
             'name'          => 'required|string|max:255',
             'specialization' => 'required|string|max:255',
         ]);
 
-        // If validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        // Create doctor
         $doctor = Doctor::create([
             'name' => $request->name,
             'specialization' => $request->specialization
         ]);
 
-        // Return response JSON doctor is created
         return response()->json($doctor, 201);
     }
 
@@ -70,21 +66,17 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $id)
     {
-        // Set validation
         $validator = Validator::make($request->all(), [
             'name'          => 'required|string|max:255',
             'specialization' => 'required|string|max:255',
         ]);
 
-        // If validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        // Update doctor
         $id->update($request->all());
 
-        // Return response JSON doctor is updated
         return response()->json($id);
     }
 
