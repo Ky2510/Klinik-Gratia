@@ -1,8 +1,2 @@
-POST /register
-Content-Type: application/json
-
-{
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "password": "password123"
-}
+http://127.0.0.1:8000/api/register 
+http://127.0.0.1:8000/api/login
