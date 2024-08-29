@@ -1,7 +1,8 @@
-curl -X POST http://yourapi.com/register \
-  -H "Content-Type: application/json" \
-  -d '{
+POST /register
+Content-Type: application/json
+
+{
     "name": "John Doe",
-    "email": "john@example.com",
-    "password": "yourpassword"
-  }'
+    "email": "john.doe@example.com",
+    "password": "password123"
+}
